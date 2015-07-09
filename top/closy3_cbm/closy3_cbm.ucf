@@ -1,0 +1,117 @@
+#==============================================================================
+# CERN (BE-CO-HT)
+# UCF defintions file for CONV-TTL-BLO gateware
+#==============================================================================
+#
+# author: Theodor Stana (t.stana@cern.ch)
+#
+# date of creation: 2013-04-26
+#
+# version: 1.0
+#
+# description:
+#    This file contains the pin definitions for the CONV-TTL-BLO FPGA.
+#
+# references:
+#   [1] CONV-TTL-BLO schematics from latest version of project at:
+#       https://edms.cern.ch/nav/EDA-02446
+#
+#==============================================================================
+# GNU LESSER GENERAL PUBLIC LICENSE
+#==============================================================================
+# This source file is free software; you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published by the
+# Free Software Foundation; either version 2.1 of the License, or (at your
+# option) any later version. This source is distributed in the hope that it
+# will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+# of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details. You should have
+# received a copy of the GNU Lesser General Public License along with this
+# source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
+#==============================================================================
+# last changes:
+#    2013-04-26   Theodor Stana     t.stana@cern.ch     File modified
+#==============================================================================
+# TODO: -
+#==============================================================================
+
+#==============================================================================
+# Clocks and resets
+#==============================================================================
+NET "clk1_i" LOC = P43;
+NET "clk1_i" IOSTANDARD = LVTTL;
+NET "clk1_i" TNM_NET = "clk1_i";
+TIMESPEC TSCLK1 = PERIOD "clk1_i" 156.25 MHz HIGH 50 %;
+
+NET "clk2_i" LOC = P44;
+NET "clk2_i" IOSTANDARD = LVTTL;
+NET "clk2_i" TNM_NET = "clk2_i";
+TIMESPEC TSCLK2 = PERIOD "clk2_i" 250 MHz HIGH 50 %;
+
+NET "extclk_i" LOC = P1;
+NET "extclk_i" IOSTANDARD = LVTTL;
+
+NET "syncclk_i" LOC = P8;
+NET "syncclk_i" IOSTANDARD = LVTTL;
+
+NET "sys_rst_n_i" LOC = P30;
+NET "sys_rst_n_i" IOSTANDARD = LVTTL;
+
+#==============================================================================
+# Inputs from microcontroller
+#==============================================================================
+NET "sync_n_i"    LOC = P3;
+NET "sync_n_i"    IOSTANDARD = LVTTL;
+NET "pw_down_n_i" LOC = P5;
+NET "pw_down_n_i" IOSTANDARD = LVTTL;
+NET "reset_n_i"   LOC = P6;
+NET "reset_n_i"   IOSTANDARD = LVTTL;
+    
+#==============================================================================
+# Inputs from AD9516
+#==============================================================================
+NET "refmon_i"   LOC = P32;
+NET "refmon_i"   IOSTANDARD = LVTTL;
+NET "lock_det_i" LOC = P31;
+NET "lock_det_i" IOSTANDARD = LVTTL;
+NET "status_i"   LOC = P29;
+NET "status_i"   IOSTANDARD = LVTTL;
+    
+#==============================================================================
+# Outputs
+#==============================================================================
+NET "sync_n_o" LOC = P28;
+NET "sync_n_o" IOSTANDARD = LVTTL;
+NET "sync_n_o" FAST;
+
+NET "clkdbg1_o"    LOC = P27;
+NET "clkdbg1_o"    IOSTANDARD = LVTTL;
+NET "clkdbg1_o"    FAST;
+NET "clkdbg2_o"    LOC = P23;
+NET "clkdbg2_o"    IOSTANDARD = LVTTL;
+NET "clkdbg2_o"    FAST;
+NET "synced_o"     LOC = P37;
+NET "synced_o"     IOSTANDARD = LVTTL;
+NET "synced_o"     FAST;
+NET "synced_led_o" LOC = P36;
+NET "synced_led_o" IOSTANDARD = LVTTL;
+NET "synced_led_o" FAST;
+    
+NET "phasediff_o[0]"  LOC = P22;
+NET "phasediff_o[0]"  IOSTANDARD = LVTTL;
+NET "phasediff_o[0]"  FAST;
+NET "phasediff_o[1]"  LOC = P21;
+NET "phasediff_o[1]"  IOSTANDARD = LVTTL;
+NET "phasediff_o[1]"  FAST;
+NET "phasediff_o[2]"  LOC = P20;
+NET "phasediff_o[2]"  IOSTANDARD = LVTTL;
+NET "phasediff_o[2]"  FAST;
+NET "phasediff_o[3]"  LOC = P19;
+NET "phasediff_o[3]"  IOSTANDARD = LVTTL;
+NET "phasediff_o[3]"  FAST;
+# NET "phasediff_o[4]"  LOC = P16;
+# NET "phasediff_o[4]"  IOSTANDARD = LVTTL;
+# NET "phasediff_o[4]"  FAST;
+# NET "phasediff_o[5]"  LOC = P14;
+# NET "phasediff_o[5]"  IOSTANDARD = LVTTL;
+# NET "phasediff_o[5]"  FAST;

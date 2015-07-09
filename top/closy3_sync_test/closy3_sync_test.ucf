@@ -1,0 +1,69 @@
+#==============================================================================
+# CERN (BE-CO-HT)
+# UCF defintions file for CONV-TTL-BLO gateware
+#==============================================================================
+#
+# author: Theodor Stana (t.stana@cern.ch)
+#
+# date of creation: 2013-04-26
+#
+# version: 1.0
+#
+# description:
+#    This file contains the pin definitions for the CONV-TTL-BLO FPGA.
+#
+# references:
+#   [1] CONV-TTL-BLO schematics from latest version of project at:
+#       https://edms.cern.ch/nav/EDA-02446
+#
+#==============================================================================
+# GNU LESSER GENERAL PUBLIC LICENSE
+#==============================================================================
+# This source file is free software; you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published by the
+# Free Software Foundation; either version 2.1 of the License, or (at your
+# option) any later version. This source is distributed in the hope that it
+# will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+# of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details. You should have
+# received a copy of the GNU Lesser General Public License along with this
+# source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
+#==============================================================================
+# last changes:
+#    2013-04-26   Theodor Stana     t.stana@cern.ch     File modified
+#==============================================================================
+# TODO: -
+#==============================================================================
+
+#==============================================================================
+# Clocks and resets
+#==============================================================================
+NET "clk_i" LOC = P44;
+NET "clk_i" IOSTANDARD = LVTTL;
+NET "clk_i" TNM_NET = "clk_i";
+TIMESPEC TSCLK1 = PERIOD "clk_i" 156.25 MHz HIGH 50 %;
+
+NET "syncclk_i" LOC = P41;
+NET "syncclk_i" IOSTANDARD = LVTTL;
+
+#==============================================================================
+# Outputs
+#==============================================================================
+NET "sync_n_o" LOC = P19;
+NET "sync_n_o" IOSTANDARD = LVTTL;
+NET "sync_n_o" FAST;
+
+NET "dbg_o" LOC = P21;
+NET "dbg_o" IOSTANDARD = LVTTL;
+NET "dbg_o" FAST;
+
+NET "osc_o" LOC = P14;
+NET "osc_o" IOSTANDARD = LVTTL;
+NET "osc_o" FAST;
+
+# NET "led_o[0]" LOC = P2;
+# NET "led_o[0]" IOSTANDARD = LVTTL;
+# NET "led_o[1]" LOC = P3;
+# NET "led_o[1]" IOSTANDARD = LVTTL;
+# NET "led_o[2]" LOC = P5;
+# NET "led_o[2]" IOSTANDARD = LVTTL;

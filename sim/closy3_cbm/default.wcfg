@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Projects/clos3-gw/closy3/syn/closy3_cbm/cbm_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="cbm_tb" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="28" />
+   <wvobject fp_name="/cbm_tb/clk1_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk1_i</obj_property>
+      <obj_property name="ObjectShortName">clk1_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/clk2_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk2_i</obj_property>
+      <obj_property name="ObjectShortName">clk2_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/extclk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">extclk_i</obj_property>
+      <obj_property name="ObjectShortName">extclk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/syncclk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">syncclk_i</obj_property>
+      <obj_property name="ObjectShortName">syncclk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/sys_rst_n_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sys_rst_n_i</obj_property>
+      <obj_property name="ObjectShortName">sys_rst_n_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/sync_n_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync_n_i</obj_property>
+      <obj_property name="ObjectShortName">sync_n_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/pw_down_n_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pw_down_n_i</obj_property>
+      <obj_property name="ObjectShortName">pw_down_n_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/reset_n_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset_n_i</obj_property>
+      <obj_property name="ObjectShortName">reset_n_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/refmon_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">refmon_i</obj_property>
+      <obj_property name="ObjectShortName">refmon_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/lock_det_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">lock_det_i</obj_property>
+      <obj_property name="ObjectShortName">lock_det_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/status_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">status_i</obj_property>
+      <obj_property name="ObjectShortName">status_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/sync_n_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync_n_o</obj_property>
+      <obj_property name="ObjectShortName">sync_n_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/clkdbg1_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clkdbg1_o</obj_property>
+      <obj_property name="ObjectShortName">clkdbg1_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/clkdbg2_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clkdbg2_o</obj_property>
+      <obj_property name="ObjectShortName">clkdbg2_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/synced_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">synced_o</obj_property>
+      <obj_property name="ObjectShortName">synced_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/synced_led_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">synced_led_o</obj_property>
+      <obj_property name="ObjectShortName">synced_led_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/phasediff_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phasediff_o[5:0]</obj_property>
+      <obj_property name="ObjectShortName">phasediff_o[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/clk1_i_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clk1_i_period</obj_property>
+      <obj_property name="ObjectShortName">clk1_i_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/clk2_i_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clk2_i_period</obj_property>
+      <obj_property name="ObjectShortName">clk2_i_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider20" type="divider">
+      <obj_property name="label">internal</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/count1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count1[2:0]</obj_property>
+      <obj_property name="ObjectShortName">count1[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/count2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count2[2:0]</obj_property>
+      <obj_property name="ObjectShortName">count2[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/phase1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phase1[5:0]</obj_property>
+      <obj_property name="ObjectShortName">phase1[5:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/phase2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phase2[5:0]</obj_property>
+      <obj_property name="ObjectShortName">phase2[5:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/phasediff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phasediff[5:0]</obj_property>
+      <obj_property name="ObjectShortName">phasediff[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/synced" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">synced</obj_property>
+      <obj_property name="ObjectShortName">synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/count_epoch" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count_epoch[11:0]</obj_property>
+      <obj_property name="ObjectShortName">count_epoch[11:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cbm_tb/uut/epoch_p1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">epoch_p1</obj_property>
+      <obj_property name="ObjectShortName">epoch_p1</obj_property>
+   </wvobject>
+</wave_config>
