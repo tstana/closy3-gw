@@ -29,7 +29,7 @@
   </files>
 
   <properties>
-    <property xil_pn:name="Device" xil_pn:value="xc2c64a" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Device" xil_pn:value="xc2c32a" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Device Family" xil_pn:value="CoolRunner2 CPLDs" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Implementation Top" xil_pn:value="Architecture|closy3_cbm|behav" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Implementation Top File" xil_pn:value="../../top/closy3_cbm/closy3_cbm.vhd" xil_pn:valueState="non-default"/>
@@ -40,7 +40,7 @@
     <property xil_pn:name="Selected Module Instance Name" xil_pn:value="/cbm_tb" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Selected Simulation Root Source Node Behavioral" xil_pn:value="work.cbm_tb" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Simulator" xil_pn:value="ISim (VHDL/Verilog)" xil_pn:valueState="default"/>
-    <property xil_pn:name="Speed Grade" xil_pn:value="-5" xil_pn:valueState="default"/>
+    <property xil_pn:name="Speed Grade" xil_pn:value="-4" xil_pn:valueState="default"/>
     <property xil_pn:name="Synthesis Tool" xil_pn:value="XST (VHDL/Verilog)" xil_pn:valueState="default"/>
     <property xil_pn:name="Target UCF File Name" xil_pn:value="closy3_cbm.ucf" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Top-Level Source Type" xil_pn:value="HDL" xil_pn:valueState="default"/>
