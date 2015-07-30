@@ -41,7 +41,9 @@ ARCHITECTURE behavior OF cbm_tb IS
  
     COMPONENT closy3_cbm
     generic (
-      g_phase_num_bits : natural := 1
+      g_use_clk1 : boolean := true;
+      g_cycles_to_syncclk : natural := 6250;
+      g_cycles_to_epoch   : natural := 4096
     );
     PORT(
          clk1_i : IN  std_logic;
@@ -56,11 +58,8 @@ ARCHITECTURE behavior OF cbm_tb IS
          lock_det_i : IN  std_logic;
          status_i : IN  std_logic;
          sync_n_o : OUT  std_logic;
-         clkdbg1_o : OUT  std_logic;
-         clkdbg2_o : OUT  std_logic;
-         synced_o : OUT  std_logic;
-         synced_led_o : OUT  std_logic;
-         phasediff_o : OUT  std_logic_vector(g_phase_num_bits-1 downto 0)
+         synced_p_o : OUT  std_logic;
+         synced_led_o : OUT  std_logic
         );
     END COMPONENT;
     
@@ -84,21 +83,19 @@ ARCHITECTURE behavior OF cbm_tb IS
    signal sync_n_o : std_logic;
    signal clkdbg1_o : std_logic;
    signal clkdbg2_o : std_logic;
-   signal synced_o : std_logic;
+   signal synced_p_o : std_logic;
    signal synced_led_o : std_logic;
    signal phasediff_o : std_logic_vector(c_num_bits-1 downto 0);
 
    -- Clock period definitions
-   constant clk1_i_period : time := 4 ns;
-   constant clk2_i_period : time := 6.4 ns;
+   constant clk1_i_period : time := 16 ns;
+   constant clk2_i_period : time :=  10 ns;
+   constant syncclk_period : time := 100 us;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: closy3_cbm
-      generic map (
-        g_phase_num_bits => c_num_bits
-      )
       PORT MAP (
           clk1_i => clk1_i,
           clk2_i => clk2_i,
@@ -112,38 +109,43 @@ BEGIN
           lock_det_i => lock_det_i,
           status_i => status_i,
           sync_n_o => sync_n_o,
-          clkdbg1_o => clkdbg1_o,
-          clkdbg2_o => clkdbg2_o,
-          synced_o => synced_o,
-          synced_led_o => synced_led_o,
-          phasediff_o => phasediff_o
+          synced_p_o => synced_p_o,
+          synced_led_o => synced_led_o
         );
 
    -- Clock process definitions
-   clk1_process :process
+   clk1_process : process
    begin
-    if (sys_rst_n_i = '1') then
+    if (sync_n_o = '1') then
       clk1_i <= '1';
       wait for clk1_i_period/2;
       clk1_i <= '0';
       wait for clk1_i_period/2;
     else
-      wait until sys_rst_n_i = '1';
-      wait for 10 ns;
+      wait until sync_n_o = '1';
+      --wait for 10 ns;
     end if;
    end process;
  
-   clk2_process :process
+   clk2_process : process
    begin
-    if (sys_rst_n_i = '1') then
+    if (sync_n_o = '1') then
       clk2_i <= '1';
       wait for clk2_i_period/2;
       clk2_i <= '0';
       wait for clk2_i_period/2;
     else
-      wait until sys_rst_n_i = '1';
-      wait for 10 ns;
+      wait until sync_n_o = '1';
+      --wait for 10 ns;
     end if;
+   end process;
+
+   syncclk_process : process
+   begin
+    syncclk_i <= '1';
+    wait for syncclk_period/2;
+    syncclk_i <= '0';
+    wait for syncclk_period/2;
    end process;
 
    -- -- Simulate AD9516 sync operation (without the delay)   
@@ -156,16 +158,13 @@ BEGIN
       lock_det_i <= '1';
       pw_down_n_i <= '1';
       reset_n_i   <= '1';
-      sync_n_i <= '1';
-      sys_rst_n_i <= '0';
+      sync_n_i <= '0';
       -- hold reset state for 100 ns.
       wait for 100 ns;
-      sys_rst_n_i <= '1';
+      sync_n_i <= '1';
 
       wait for clk1_i_period*10;
       lock_det_i <= '1';
-
-      -- insert stimulus here 
 
       wait;
    end process;
