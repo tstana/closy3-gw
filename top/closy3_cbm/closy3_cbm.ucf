@@ -1,20 +1,18 @@
 #==============================================================================
-# CERN (BE-CO-HT)
-# UCF defintions file for CONV-TTL-BLO gateware
+# GSI Helmholzcenter for Heavy Ion Research GmbH
+# UCF defintions file for the CLOSY3 board
 #==============================================================================
 #
-# author: Theodor Stana (t.stana@cern.ch)
-#
-# date of creation: 2013-04-26
-#
-# version: 1.0
+# author: Theodor Stana (t.stana@gsi.de)
 #
 # description:
-#    This file contains the pin definitions for the CONV-TTL-BLO FPGA.
 #
-# references:
-#   [1] CONV-TTL-BLO schematics from latest version of project at:
-#       https://edms.cern.ch/nav/EDA-02446
+#    This file contains pin definitions for the CPLD on the CLOSY3 design. It
+#    lists all pins as appearing on the schematics and should be used as a
+#    starting point when starting over a new CPLD design for the CLOSY3.
+#
+#    NOTE: This file is a stub. It should be copied to another file and THEN
+#    changed accordingly.
 #
 #==============================================================================
 # GNU LESSER GENERAL PUBLIC LICENSE
@@ -28,9 +26,6 @@
 # See the GNU Lesser General Public License for more details. You should have
 # received a copy of the GNU Lesser General Public License along with this
 # source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
-#==============================================================================
-# last changes:
-#    2013-04-26   Theodor Stana     t.stana@cern.ch     File modified
 #==============================================================================
 # TODO: -
 #==============================================================================
