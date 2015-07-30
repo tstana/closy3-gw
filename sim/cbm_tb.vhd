@@ -48,15 +48,8 @@ ARCHITECTURE behavior OF cbm_tb IS
     PORT(
          clk1_i : IN  std_logic;
          clk2_i : IN  std_logic;
-         extclk_i : IN  std_logic;
          syncclk_i : IN  std_logic;
-         sys_rst_n_i : IN  std_logic;
          sync_n_i : IN  std_logic;
-         pw_down_n_i : IN  std_logic;
-         reset_n_i : IN  std_logic;
-         refmon_i : IN  std_logic;
-         lock_det_i : IN  std_logic;
-         status_i : IN  std_logic;
          sync_n_o : OUT  std_logic;
          synced_p_o : OUT  std_logic;
          synced_led_o : OUT  std_logic
@@ -99,15 +92,8 @@ BEGIN
       PORT MAP (
           clk1_i => clk1_i,
           clk2_i => clk2_i,
-          extclk_i => extclk_i,
           syncclk_i => syncclk_i,
-          sys_rst_n_i => sys_rst_n_i,
           sync_n_i => sync_n_i,
-          pw_down_n_i => pw_down_n_i,
-          reset_n_i => reset_n_i,
-          refmon_i => refmon_i,
-          lock_det_i => lock_det_i,
-          status_i => status_i,
           sync_n_o => sync_n_o,
           synced_p_o => synced_p_o,
           synced_led_o => synced_led_o
