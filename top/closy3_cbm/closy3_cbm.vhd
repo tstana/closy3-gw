@@ -121,6 +121,8 @@ begin
   --===========================================================================
   -- Synchronization FSM
   --===========================================================================
+  -- NOTE: The FSM works on the slow SYNCCLK signal. Each state prepares what
+  -- happens during the next state.
   p_fsm : process (syncclk_i, sync_n_i)
   begin
     if (sync_n_i = '0') then
@@ -128,25 +130,30 @@ begin
       synced <= '0';
     elsif rising_edge(syncclk_i) then
       case state is
+        -----------------------------------------------------------------------
         when CHECK_N_SYNC =>
           sync_n_o <= '1';
           state <= DEASSERT_SYNC;
+        -----------------------------------------------------------------------
         when DEASSERT_SYNC =>
           counter_rst <= '0';
           state <= COUNT;
+        -----------------------------------------------------------------------
         when COUNT =>
-          if (counter = 0) then --g_cycles_to_syncclk-1) then
+          if (counter = 0) then
             synced <= '1';
           else
             synced <= '0';
           end if;
           state <= CHECK_COUNTER;
+        -----------------------------------------------------------------------
         when CHECK_COUNTER =>
           if (synced = '0') then
             sync_n_o    <= '0';
             counter_rst <= '1';
           end if;
           state <= CHECK_N_SYNC;
+        -----------------------------------------------------------------------
       end case;
     end if;
   end process p_fsm;
@@ -154,6 +161,8 @@ begin
   --===========================================================================
   -- Counter processes
   --===========================================================================
+  -- Select which clock to use for the synchronization counter, based on the
+  -- generic.
 gen_use_clk1 : if g_use_clk1 generate
   clk_for_sync <= clk1_i;
 end generate gen_use_clk1;
@@ -162,6 +171,7 @@ gen_use_clk2 : if not g_use_clk1 generate
   clk_for_sync <= clk2_i;
 end generate gen_use_clk2;
   
+  -- Count up to the synchronization clock and generate a pulse on the epoch.
   p_counter : process (clk_for_sync, counter_rst)
   begin
     if (counter_rst = '1') then
@@ -182,11 +192,11 @@ end generate gen_use_clk2;
   --===========================================================================
   -- Outputs
   --===========================================================================
-  -- Non-clocked
+  -- Pass-through
   clkdbg1_o <= clk1_i;
   clkdbg2_o <= clk2_i;
   
-  -- Clocked, see above
+  -- Flip-flops, see above
   synced_p_o   <= epoch_p;
   synced_led_o <= synced;
 
