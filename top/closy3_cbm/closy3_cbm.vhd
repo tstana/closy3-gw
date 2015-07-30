@@ -40,8 +40,8 @@ entity closy3_cbm is
     -- Use clk1_i for synchronization mechanism; else, use clk2_i
     g_use_clk1 : boolean := true;
     
-    -- clk_for_sync cycles between syncclk_i cycles
-    g_cycles_to_syncclk : natural := 1000;
+    -- clk_for_sync cycles between syncclk_i rising edges
+    g_cycles_to_syncclk : natural := 6250;
     
     -- clk_for_sync cycles to epoch
     g_cycles_to_epoch   : natural := 4096
@@ -51,22 +51,12 @@ entity closy3_cbm is
     -- Clocks
     clk1_i        : in  std_logic;
     clk2_i        : in  std_logic;
-    extclk_i      : in  std_logic;
+
     syncclk_i     : in  std_logic; -- Note: NOT on GCLK pin
-    
-    -- System reset input on GSR pin
-    sys_rst_n_i   : in  std_logic;
-    
+
     -- Inputs from microcontroller
     sync_n_i      : in  std_logic;
-    pw_down_n_i   : in  std_logic;
-    reset_n_i     : in  std_logic;
-    
-    -- Inputs from AD9516
-    refmon_i      : in  std_logic;
-    lock_det_i    : in  std_logic;
-    status_i      : in  std_logic;
-    
+
     -- Outputs
     sync_n_o      : out std_logic;
     
@@ -74,8 +64,6 @@ entity closy3_cbm is
     clkdbg2_o     : out std_logic;
     synced_p_o    : out std_logic;
     synced_led_o  : out std_logic
-    
-  --  phasediff_o   : out std_logic_vector(g_phase_num_bits-1 downto 0)
   );
 end entity closy3_cbm;
 
@@ -141,33 +129,28 @@ begin
     elsif rising_edge(syncclk_i) then
       case state is
         when CHECK_N_SYNC =>
-          if (synced = '1') then
-            sync_n_o <= '1';
-          else
-            sync_n_o <= '0';
-            counter_rst <= '1';
-          end if;
+          sync_n_o <= '1';
           state <= DEASSERT_SYNC;
         when DEASSERT_SYNC =>
-          sync_n_o <= '1';
+          counter_rst <= '0';
           state <= COUNT;
         when COUNT =>
-          counter_rst <= '0';
-          state <= CHECK_COUNTER;
-        when CHECK_COUNTER =>
-          if (counter = g_cycles_to_syncclk-2) then
+          if (counter = 0) then --g_cycles_to_syncclk-1) then
             synced <= '1';
           else
             synced <= '0';
           end if;
-          state <= CHECK_N_SYNC;
-        when others =>
-          synced <= '0';
+          state <= CHECK_COUNTER;
+        when CHECK_COUNTER =>
+          if (synced = '0') then
+            sync_n_o    <= '0';
+            counter_rst <= '1';
+          end if;
           state <= CHECK_N_SYNC;
       end case;
     end if;
   end process p_fsm;
-
+  
   --===========================================================================
   -- Counter processes
   --===========================================================================
@@ -189,10 +172,10 @@ end generate gen_use_clk2;
         counter <= (others => '0');
       end if;
       
-      -- epoch_p <= '0';
-      -- if (synced = '1') and (counter = g_cycles_to_epoch-1) then
-        -- epoch_p <= '1';
-      -- end if;
+      epoch_p <= '0';
+      if (synced = '1') and (counter = g_cycles_to_epoch-1) then
+        epoch_p <= '1';
+      end if;
     end if;
   end process p_counter;
 
@@ -206,7 +189,6 @@ end generate gen_use_clk2;
   -- Clocked, see above
   synced_p_o   <= epoch_p;
   synced_led_o <= synced;
-  --phasediff_o  <= (others => '0');
 
 end architecture behav;
 --=============================================================================
